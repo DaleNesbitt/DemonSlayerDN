@@ -1,0 +1,11 @@
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\bin\Debug\net9.0\DemonSlayer.deps.json
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\bin\Debug\net9.0\DemonSlayer.dll
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\bin\Debug\net9.0\DemonSlayer.pdb
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\DemonSlayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\DemonSlayer.AssemblyInfoInputs.cache
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\DemonSlayer.AssemblyInfo.cs
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\DemonSlayer.csproj.CoreCompileInputs.cache
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\DemonSlayer.dll
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\refint\DemonSlayer.dll
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\DemonSlayer.pdb
+C:\Users\Dale\OneDrive - Atlantic TU\Year 4\DevOps\MyDevOpsPipeline\src\DemonSlayer\obj\Debug\net9.0\ref\DemonSlayer.dll
