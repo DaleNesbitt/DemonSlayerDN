@@ -1,30 +1,46 @@
-using System;
-
 namespace DemonSlayer
 {
+    /// <summary>
+    /// Represents a player in the DemonSlayer game.
+    /// </summary>
     public class Player
     {
-        public int Health { get; private set; }
-        public int Score { get; private set; }
+        /// <summary>
+        /// The name of the player.
+        /// </summary>
+        public string Name { get; set; }
 
-        public Player(int startingHealth)
+        /// <summary>
+        /// The health points of the player.
+        /// </summary>
+        public int Health { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Player"/> class.
+        /// </summary>
+        /// <param name="name">The name of the player.</param>
+        public Player(string name)
         {
-            if (startingHealth <= 0)
-                throw new ArgumentException("Starting health must be greater than zero");
-            Health = startingHealth;
-            Score = 0;
+            Name = name;
+            Health = 100;
         }
 
+        /// <summary>
+        /// Deals damage to the player.
+        /// </summary>
+        /// <param name="amount">Amount of damage to take.</param>
         public void TakeDamage(int amount)
         {
-            if (amount < 0) throw new ArgumentException("Damage cannot be negative");
-            Health = Math.Max(0, Health - amount);
+            Health -= amount;
         }
 
-        public void AddScore(int amount)
+        /// <summary>
+        /// Heals the player.
+        /// </summary>
+        /// <param name="amount">Amount of health to restore.</param>
+        public void Heal(int amount)
         {
-            if (amount < 0) throw new ArgumentException("Score cannot be negative");
-            Score += amount;
+            Health += amount;
         }
     }
 }
