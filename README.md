@@ -1,3 +1,4 @@
+![CI](https://github.com/DaleNesbitt/DemonSlayerDN/actions/workflows/dotnet.yml/badge.svg)
 # DemonSlayerDN
 A repo for a DevOps project. I will design a game for the new anime "Demon Slayer"
 
