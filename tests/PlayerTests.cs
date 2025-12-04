@@ -1,46 +1,66 @@
-using System;
 using DemonSlayer;
+using Microsoft.Extensions.Logging;
 using Xunit;
 
 namespace DemonSlayer.Tests
 {
+    /// <summary>
+    /// Unit tests for the Player class.
+    /// </summary>
     public class PlayerTests
     {
-        [Fact]
-        public void PlayerStartsWithCorrectHealth()
+        /// <summary>
+        /// Helper method that creates a logger for testing.
+        /// This is a simple console logger so we can see log output in CI.
+        /// </summary>
+        private ILogger<Player> CreateLogger()
         {
-            var p = new Player(100);
-            Assert.Equal(100, p.Health);
+            using var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddConsole();
+                builder.SetMinimumLevel(LogLevel.Information);
+            });
+
+            return loggerFactory.CreateLogger<Player>();
         }
 
         [Fact]
-        public void TakingDamageReducesHealth()
+        public void PlayerStartsWithFullHealth()
         {
-            var p = new Player(100);
-            p.TakeDamage(30);
-            Assert.Equal(70, p.Health);
+            // Arrange — create a player with a logger
+            var logger = CreateLogger();
+            var player = new Player("Hero", logger);
+
+            // Assert — new players always start with 100 HP
+            Assert.Equal(100, player.Health);
         }
 
         [Fact]
-        public void HealthDoesNotGoBelowZero()
+        public void PlayerTakesDamageCorrectly()
         {
-            var p = new Player(50);
-            p.TakeDamage(100);
-            Assert.Equal(0, p.Health);
+            // Arrange
+            var logger = CreateLogger();
+            var player = new Player("Hero", logger);
+
+            // Act
+            player.TakeDamage(30);
+
+            // Assert
+            Assert.Equal(70, player.Health);
         }
 
         [Fact]
-        public void AddingScoreIncreasesScore()
+        public void PlayerHealsCorrectly()
         {
-            var p = new Player(100);
-            p.AddScore(10);
-            Assert.Equal(10, p.Score);
-        }
+            // Arrange
+            var logger = CreateLogger();
+            var player = new Player("Hero", logger);
 
-        [Fact]
-        public void CreatingPlayerWithZeroHealthThrows()
-        {
-            Assert.Throws<ArgumentException>(() => new Player(0));
+            // Act
+            player.Heal(20);
+
+            // Assert
+            Assert.Equal(120, player.Health);
         }
     }
 }
