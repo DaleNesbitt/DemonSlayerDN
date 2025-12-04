@@ -1,11 +1,14 @@
 name: .NET Build & Test
 
+# Basic permissions needed for pulling code and uploading artifacts
 permissions:
   contents: read
 
 on:
+  # Run CI on pushes to main
   push:
     branches: [ main ]
+  # Run CI on pull requests into main
   pull_request:
     branches: [ main ]
 
@@ -14,24 +17,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the code so the runner has access to the repo files
       - uses: actions/checkout@v3
 
+      # Install .NET 8 so the runner can build and test the project
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
 
+      # Restore all NuGet dependencies for both src and tests
       - name: Restore dependencies
         run: dotnet restore
 
+      # Build the project (skipping restore since we already did it)
       - name: Build
         run: dotnet build --no-restore
 
+      # Run all tests and collect code coverage information
       - name: Run tests with coverage
         run: dotnet test --no-build --collect:"XPlat Code Coverage"
 
+      # Upload the code coverage file as an artifact so it can be downloaded from CI
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: '**/coverage.cobertura.xml'
+
+      # Upload generated XML documentation (autodoc) as an artifact.
+      # This proves documentation is generated automatically by the build.
+      - name: Upload XML documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: xml-docs
+          path: '**/*.xml'
