@@ -45,7 +45,7 @@ namespace DemonSlayer.Tests
             // Act
             player.TakeDamage(30);
 
-            // Assert — health should reduce properly
+            // Assert
             Assert.Equal(70, player.Health);
         }
 
