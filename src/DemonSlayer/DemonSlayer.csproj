@@ -1,11 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>DemonSlayer</RootNamespace>
+
+    <!-- Enables XML documentation generation so tools (and CI) 
+         can automatically produce documentation from your /// comments -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>bin\Debug\net8.0\DemonSlayer.xml</DocumentationFile>
+
+    <!-- Stops the compiler warning you about every missing XML comment.
+         Keeps your CI pipeline clean and avoids hundreds of warnings. -->
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
 
 </Project>
