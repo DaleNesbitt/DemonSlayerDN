@@ -11,10 +11,12 @@ namespace DemonSlayer.Tests
     {
         /// <summary>
         /// Creates a logger for testing.
+        /// We keep this simple: console logger with Info level so that if something
+        /// goes wrong, we can see log output in the CI logs.
         /// </summary>
         private ILogger<Player> CreateLogger()
         {
-            // Create a logger factory that stays alive for the whole test.
+            // Create a logger factory that stays alive for the whole test run.
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder.AddConsole(); // lets logs appear in GitHub Actions
@@ -27,9 +29,10 @@ namespace DemonSlayer.Tests
         [Fact]
         public void PlayerStartsWithFullHealth()
         {
-            var logger = CreateLogger();  
+            var logger = CreateLogger();
             var player = new Player("Hero", logger);
 
+            // New players should always start at 100 HP.
             Assert.Equal(100, player.Health);
         }
 
@@ -39,8 +42,9 @@ namespace DemonSlayer.Tests
             var logger = CreateLogger();
             var player = new Player("Hero", logger);
 
-            player.TakeDamage(30); 
+            player.TakeDamage(30);
 
+            // Health should drop from 100 to 70 after taking 30 damage.
             Assert.Equal(70, player.Health);
         }
 
@@ -52,6 +56,7 @@ namespace DemonSlayer.Tests
 
             player.Heal(20);
 
+            // Health should increase from 100 to 120 when healed by 20.
             Assert.Equal(120, player.Health);
         }
     }
