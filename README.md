@@ -19,4 +19,4 @@ For my branching strategy I've chosen "Github Flow". I chose this strategy as it
 4. Open a Pull Request to merge the branch into main. Add my labels (feature, documentation) and comments as if reviewed by a team of 10.
 5. Test that the code works correctly (even if it’s just a “Hello World” script).
 6. Once approved, merge into main.
-7. Setup an automated process to delete the now unneeded feature branch.
+7. Setup an automated process to delete the now unneeded feature branch
