@@ -1,32 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Library</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
-        <RootNamespace>DemonSlayer</RootNamespace>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <NoWarn>1591</NoWarn>
-    
-        <!-- Force analyzers to run during CI builds -->
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    </PropertyGroup>
-    
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" />
-        <PackageReference Include="Roslynator.Analyzers" Version="4.14.1" />
-    </ItemGroup>
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>DemonSlayer</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1591</NoWarn>
 
+    <!-- Force analyzers to run during CI builds -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+  </PropertyGroup>
 
-    <!-- Add logging packages -->
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" />
+  <ItemGroup>
+    <!-- Logging packages -->
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" />
 
-        <!-- Roslynator analyzers: enabled for both local development and CI -->
-        <PackageReference Include="Roslynator.Analyzers" Version="4.14.1" />
-    </ItemGroup>
-
+    <!-- Roslynator analyzers: enabled locally and in CI -->
+    <PackageReference Include="Roslynator.Analyzers" Version="4.14.1" />
+  </ItemGroup>
 
 </Project>
