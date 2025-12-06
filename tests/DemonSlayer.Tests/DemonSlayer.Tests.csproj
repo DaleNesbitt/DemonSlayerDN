@@ -1,21 +1,38 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-<!-- Match the main project framework -->
   <PropertyGroup>
+    <!-- Match the main project framework -->
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!-- Make it clear this is a test project, not something we ship -->
     <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Required for test discovery + execution on .NET 8 -->
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageReference Include="xunit" Version="2.8.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1" />
-    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <!-- Test SDK so 'dotnet test' knows how to discover and run tests -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+
+    <!-- xUnit itself: the testing framework -->
+    <PackageReference Include="xunit" Version="2.9.2" />
+
+    <!-- xUnit runner so the test platform can actually find [Fact] tests -->
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <!-- Don't let this leak into consumers if someone referenced this project -->
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <!-- Coverage collector used by the CI pipeline -->
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
+  <!-- Link the test project to the main DemonSlayer project so tests can use Player, etc. -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\DemonSlayer\DemonSlayer.csproj" />
   </ItemGroup>
