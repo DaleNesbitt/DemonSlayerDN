@@ -1,27 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+<!-- Match the main project framework -->
   <PropertyGroup>
-    <!-- Match the main project framework -->
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-  <!-- Test packages -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="xunit" Version="2.9.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <!-- Required for test discovery + execution on .NET 8 -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageReference Include="xunit" Version="2.8.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1" />
     <PackageReference Include="coverlet.collector" Version="6.0.2" />
   </ItemGroup>
 
-  <!-- Required for xUnit usage -->
-  <ItemGroup>
-    <Using Include="Xunit" />
-  </ItemGroup>
-
-  <!-- Reference to main project -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\DemonSlayer\DemonSlayer.csproj" />
   </ItemGroup>
