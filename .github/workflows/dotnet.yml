@@ -27,21 +27,20 @@ jobs:
           dotnet-version: 8.0.x
 
       # Restore dependencies for the ENTIRE solution (src + tests)
-      # This is important — restoring without the .sln only restores the main project,
-      # which means the test project never restores and never builds.
+      # Using the .sln here guarantees both projects restore correctly.
       - name: Restore dependencies
         run: dotnet restore DemonSlayerSolution.sln
 
       # Build the whole solution. This makes sure BOTH the main project AND
-      # the test project are compiled. If we build without the .sln, only DemonSlayer builds
-      # and the test DLL ends up empty (which is why GitHub Actions said "No test available").
+      # the test project are compiled before we try to run tests.
       - name: Build solution
         run: dotnet build DemonSlayerSolution.sln --configuration Release --no-restore
 
-      # Run all tests and collect coverage.
-      # Using the .sln ensures tests actually run (instead of xUnit reporting '0 tests found').
+      # Run all tests in the test project and collect coverage.
+      # We point directly at the test .csproj to avoid any weird solution-level
+      # discovery issues we were hitting before.
       - name: Run tests with coverage
-        run: dotnet test DemonSlayerSolution.sln --configuration Release --no-build --collect:"XPlat Code Coverage"
+        run: dotnet test tests/DemonSlayer.Tests/DemonSlayer.Tests.csproj --configuration Release --no-build --collect:"XPlat Code Coverage"
 
       # Upload the code coverage file so it appears in Actions artifacts.
       - name: Upload coverage report
