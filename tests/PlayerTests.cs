@@ -10,14 +10,14 @@ namespace DemonSlayer.Tests
     public class PlayerTests
     {
         /// <summary>
-        /// Helper method that creates a logger for testing.
-        /// This is a simple console logger so we can see log output in CI.
+        /// Creates a logger for testing.
         /// </summary>
         private ILogger<Player> CreateLogger()
         {
-            using var loggerFactory = LoggerFactory.Create(builder =>
+            // Create a logger factory that stays alive for the whole test.
+            var loggerFactory = LoggerFactory.Create(builder =>
             {
-                builder.AddConsole();
+                builder.AddConsole(); // lets logs appear in GitHub Actions
                 builder.SetMinimumLevel(LogLevel.Information);
             });
 
@@ -27,39 +27,31 @@ namespace DemonSlayer.Tests
         [Fact]
         public void PlayerStartsWithFullHealth()
         {
-            // Arrange — create a player with a logger
-            var logger = CreateLogger();
+            var logger = CreateLogger();  
             var player = new Player("Hero", logger);
 
-            // Assert — new players always start with 100 HP
             Assert.Equal(100, player.Health);
         }
 
         [Fact]
         public void PlayerTakesDamageCorrectly()
         {
-            // Arrange
             var logger = CreateLogger();
             var player = new Player("Hero", logger);
 
-            // Act
-            player.TakeDamage(30);
+            player.TakeDamage(30); 
 
-            // Assert
             Assert.Equal(70, player.Health);
         }
 
         [Fact]
         public void PlayerHealsCorrectly()
         {
-            // Arrange
             var logger = CreateLogger();
             var player = new Player("Hero", logger);
 
-            // Act
             player.Heal(20);
 
-            // Assert
             Assert.Equal(120, player.Health);
         }
     }
