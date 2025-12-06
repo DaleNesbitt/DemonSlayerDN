@@ -61,5 +61,12 @@ namespace DemonSlayer
 
             Health += amount;
         }
+
+        //Warning
+        public void ShowWarning(int unusedParameter)
+        {
+            // This will trigger a warning for Roslynator. Until now, no warnings are being triggered.
+        }
+        
     }
 }
