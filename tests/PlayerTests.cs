@@ -6,20 +6,20 @@ namespace DemonSlayer.Tests
 {
     /// <summary>
     /// Unit tests for the Player class.
+    /// Includes a test logger so GitHub Actions can show log output.
     /// </summary>
     public class PlayerTests
     {
         /// <summary>
         /// Creates a logger for testing.
-        /// We keep this simple: console logger with Info level so that if something
-        /// goes wrong, we can see log output in the CI logs.
+        /// We keep this simple: a console logger with Information level.
+        /// This ensures log output appears inside the CI logs if anything fails.
         /// </summary>
         private ILogger<Player> CreateLogger()
         {
-            // Create a logger factory that stays alive for the whole test run.
             var loggerFactory = LoggerFactory.Create(builder =>
             {
-                builder.AddConsole(); // lets logs appear in GitHub Actions
+                builder.AddConsole(); // Allows logs to display in GitHub Actions
                 builder.SetMinimumLevel(LogLevel.Information);
             });
 
