@@ -10,7 +10,7 @@ I chose Github Project as my project management tool as it contains all of my ma
 I could have chosen Jira as it is "industry standard", however, I feel that Github Project looks and acts similiarly enough that my skills should be transferable.
 
 ## Branching Strategy
-For my branching strategy I've chosen "Github Flow". I chose this strategy as it only contains 2 branches - Main and Feature. This is easily manageable as opposed to something like Trunk or Gitflow which has multiple branches. We can use Main as our working code and use Feature for any changes or works-in-progress.
+For my branching strategy I've chosen "Github Flow". I chose this strategy as it only contains 2 branches - Main and Feature. This is easily manageable as opposed to something like Trunk or Gitflow which has multiple branches. We can use Main as our working code and use Feature for any changes or works-in-progress. UPDATE: This has been working great so far, with feature branches easily merged to main and then deleted to keep everything tidy. This is working well as a solo dev but could also work well in a small team.
 
 ## Pipeline Plan:
 1. Create a new feature branch from main for each task (e.g., feature/setup-pipeline).
